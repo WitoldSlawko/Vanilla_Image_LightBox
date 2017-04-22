@@ -1,0 +1,86 @@
+.gallery ul {
+    list-style: none;
+}
+
+.gallery li {
+    display: inline-block;
+}
+/*
+.gallery li img, gallery li .div_pic {
+    width: 600px;
+    height: 600px;
+}
+*/
+.picture_1 {
+	width: 100px;
+	height: 100px;
+}
+
+.picture_2 {
+	width: 200px;
+	height: 200px;
+}
+
+.picture_3 {
+	width: 300px;
+	height: 300px;
+}
+
+.picture_4 {
+	width: 400px;
+	height: 400px;
+}
+.picture_5 {
+	width: 500px;
+	height: 500px;
+}
+
+.picture_6 {
+	width: 600px;
+	height: 600px;
+}
+/*
+.fullScreen {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    z-index: 1;
+    background:rgba(255,255,255,0.7);
+}
+.close {
+    display: block;
+    margin: auto;
+}
+
+.fullScreen img {
+    display: block;
+    margin: 50px auto;
+    width: 400px;
+    width: 50%;
+    height: 400px;
+    height: 50%;
+}
+*/
+/*
+body {
+    font-family:'Segoe UI';
+    font-size: 12pt;
+}
+header h1 {
+    font-size:12pt;
+    color: #fff;
+    background-color: #F39C12;
+    padding: 20px;
+}
+article {
+    width: 80%;
+    margin:auto;
+    margin-top:10px;
+}
+.thumbnail {
+    height: 100px;
+    margin: 10px;
+}
+*/
