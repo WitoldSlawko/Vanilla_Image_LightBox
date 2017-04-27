@@ -513,7 +513,7 @@ document.addEventListener("DOMContentLoaded", function () {
 				//vilb_canvas.setAttribute('href',vilb_temp_canvas.src);
 				//vilb_temp_canvas.setAttribute('crossOrigin','anonymous');
 				//vilb_canvas.setAttribute('href', vilb_temp_canvas.toDataURL("image/png"));
-				vilb_canvas.setAttribute('download','abc.png');
+				vilb_canvas.setAttribute('download','abc.jpg');
 				console.log(vilb_temp_canvas);
 			}
 		})
@@ -521,8 +521,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
 	function convertImageToCanvas(image) {
 		var canvas = document.createElement("canvas");
-		canvas.width = image.width;
-		canvas.height = image.height;
+		canvas.width = image.getBoundingClientRect().width;
+		canvas.height = image.getBoundingClientRect().height;
 		canvas.getContext("2d").drawImage(image, 0, 0);
 		return canvas;
 	}
