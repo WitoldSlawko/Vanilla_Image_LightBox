@@ -344,7 +344,7 @@ document.addEventListener("DOMContentLoaded", function () {
 					vilb_center_row.style.alignItems = 'center';
 					vilb_image.style.transformOrigin = 'center';
 				}
-				//console.log(vilb_image.getBoundingClientRect().height)
+				console.log(vilb_image.getBoundingClientRect().height)
 				vilb_scaling_string = 'scale(' + vilb_scaling + ')';
 				vilb_image.style.transform = vilb_rotation_string + ' ' + vilb_scaling_string;
 				return vilb_scaling, vilb_rotation, vilb_rotation_string, vilb_scaling_string;
@@ -511,8 +511,8 @@ document.addEventListener("DOMContentLoaded", function () {
 				var canvas = document.createElement("canvas");
 				canvas.width = vilb_image.getBoundingClientRect().width;
 				canvas.height = vilb_image.getBoundingClientRect().height;
-				console.log(canvas.width, canvas.height);
-				canvas.getContext("2d").drawImage(image, 0, 0, vilb_image.getBoundingClientRect().width, vilb_image.getBoundingClientRect().hight);
+				//console.log(typeof vilb_image.getBoundingClientRect().height, vilb_image.getBoundingClientRect().width);
+				canvas.getContext("2d").drawImage(image, 0, 0, canvas.width, canvas.hight);
 				var image = new Image();
 				image.setAttribute('crossOrigin', 'anonymous');
 				image.src = canvas.toDataURL("image/png");
@@ -524,7 +524,7 @@ document.addEventListener("DOMContentLoaded", function () {
 				//vilb_temp_canvas.setAttribute('crossOrigin','anonymous');
 				//vilb_canvas.setAttribute('href', vilb_temp_canvas.toDataURL("image/png"));
 				vilb_canvas.setAttribute('download', 'abc.png');
-				console.log(vilb_temp_canvas);
+				//console.log(vilb_temp_canvas);
 			}
 		})
 	}
