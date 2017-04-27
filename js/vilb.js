@@ -513,7 +513,7 @@ document.addEventListener("DOMContentLoaded", function () {
 				//vilb_canvas.setAttribute('href',vilb_temp_canvas.src);
 				//vilb_temp_canvas.setAttribute('crossOrigin','anonymous');
 				//vilb_canvas.setAttribute('href', vilb_temp_canvas.toDataURL("image/png"));
-				vilb_canvas.setAttribute('download','abc.jpg');
+				vilb_canvas.setAttribute('download','abc.png');
 				console.log(vilb_temp_canvas);
 			}
 		})
@@ -531,7 +531,7 @@ document.addEventListener("DOMContentLoaded", function () {
 	function convertCanvasToImage(canvas) {
 		var image = new Image();
 		image.setAttribute('crossOrigin','anonymous');
-		image.src = canvas.toDataURL("image/jpg");
+		image.src = canvas.toDataURL("image/png");
 		return image;
 	}
 	
