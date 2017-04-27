@@ -344,6 +344,7 @@ document.addEventListener("DOMContentLoaded", function () {
 					vilb_center_row.style.alignItems = 'center';
 					vilb_image.style.transformOrigin = 'center';
 				}
+				//console.log(vilb_image.getBoundingClientRect().height)
 				vilb_scaling_string = 'scale(' + vilb_scaling + ')';
 				vilb_image.style.transform = vilb_rotation_string + ' ' + vilb_scaling_string;
 				return vilb_scaling, vilb_rotation, vilb_rotation_string, vilb_scaling_string;
@@ -503,38 +504,38 @@ document.addEventListener("DOMContentLoaded", function () {
 					vilb_last_sliding();
 				}
 			}
-			
+
 			// Imaging canvas 
 			function vilb_imaging_canvas() {
-				console.log('canvas')
-				var vilb_temp_canvas = convertImageToCanvas(vilb_imgs[vilb_locking]);
-				var vilb_temp_image = convertCanvasToImage(vilb_temp_canvas);
-				vilb_canvas.setAttribute('href',vilb_temp_image.src);
+				//console.log('canvas')
+				var canvas = document.createElement("canvas");
+				canvas.width = vilb_image.getBoundingClientRect().width;
+				canvas.height = vilb_image.getBoundingClientRect().height;
+				console.log(canvas.width, canvas.height);
+				canvas.getContext("2d").drawImage(image, 0, 0, vilb_image.getBoundingClientRect().width, vilb_image.getBoundingClientRect().hight);
+				var image = new Image();
+				image.setAttribute('crossOrigin', 'anonymous');
+				image.src = canvas.toDataURL("image/png");
+				//return canvas;
+				//var vilb_temp_canvas = convertImageToCanvas(vilb_imgs[vilb_locking]);
+				//var vilb_temp_image = convertCanvasToImage(vilb_temp_canvas);
+				vilb_canvas.setAttribute('href', image.src);
 				//vilb_canvas.setAttribute('href',vilb_temp_canvas.src);
 				//vilb_temp_canvas.setAttribute('crossOrigin','anonymous');
 				//vilb_canvas.setAttribute('href', vilb_temp_canvas.toDataURL("image/png"));
-				vilb_canvas.setAttribute('download','abc.png');
+				vilb_canvas.setAttribute('download', 'abc.png');
 				console.log(vilb_temp_canvas);
 			}
 		})
 	}
 
-	function convertImageToCanvas(image) {
-		var canvas = document.createElement("canvas");
-		canvas.width = image.getBoundingClientRect().width;
-		canvas.height = image.getBoundingClientRect().height;
-		console.log( canvas.width, canvas.height );
-		canvas.getContext("2d").drawImage(image, 0, 0);
-		return canvas;
-	}
-	
-	function convertCanvasToImage(canvas) {
-		var image = new Image();
-		image.setAttribute('crossOrigin','anonymous');
-		image.src = canvas.toDataURL("image/png");
-		return image;
-	}
-	
+	//function convertImageToCanvas(image) {
+	//}
+
+	//function convertCanvasToImage(canvas) {
+		//return image;
+	//}
+
 });
 
 var sheet = (function () {
