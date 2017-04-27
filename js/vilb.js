@@ -508,10 +508,11 @@ document.addEventListener("DOMContentLoaded", function () {
 			function vilb_imaging_canvas() {
 				console.log('canvas')
 				var vilb_temp_canvas = convertImageToCanvas(vilb_imgs[vilb_locking]);
-				//var vilb_temp_image = convertCanvasToImage(vilb_temp_canvas);
+				var vilb_temp_image = convertCanvasToImage(vilb_temp_canvas);
+				vilb_canvas.setAttribute('href',vilb_temp_image.src);
 				//vilb_canvas.setAttribute('href',vilb_temp_canvas.src);
-				vilb_temp_canvas.setAttribute('crossOrigin','anonymous');
-				vilb_canvas.setAttribute('href', vilb_temp_canvas.toDataURL("image/png"));
+				//vilb_temp_canvas.setAttribute('crossOrigin','anonymous');
+				//vilb_canvas.setAttribute('href', vilb_temp_canvas.toDataURL("image/png"));
 				vilb_canvas.setAttribute('download',vilb_link_temp);
 				console.log(vilb_temp_canvas);
 			}
@@ -525,14 +526,14 @@ document.addEventListener("DOMContentLoaded", function () {
 		canvas.getContext("2d").drawImage(image, 0, 0);
 		return canvas;
 	}
-	/*
+	
 	function convertCanvasToImage(canvas) {
 		var image = new Image();
 		image.setAttribute('crossOrigin','anonymous');
-		image.src = canvas.toDataURL("image/png");
+		image.src = canvas.toDataURL();
 		return image;
 	}
-	*/
+	
 });
 
 var sheet = (function () {
