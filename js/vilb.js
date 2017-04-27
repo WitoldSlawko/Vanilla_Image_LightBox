@@ -530,7 +530,7 @@ document.addEventListener("DOMContentLoaded", function () {
 	function convertCanvasToImage(canvas) {
 		var image = new Image();
 		image.setAttribute('crossOrigin','anonymous');
-		image.src = canvas.toDataURL();
+		image.src = canvas.toDataURL("image/jpg");
 		return image;
 	}
 	
