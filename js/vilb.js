@@ -509,10 +509,10 @@ document.addEventListener("DOMContentLoaded", function () {
 			function vilb_imaging_canvas() {
 				//console.log('canvas')
 				var canvas = document.createElement("canvas");
-				canvas.width = vilb_image.getBoundingClientRect().width;
-				canvas.height = vilb_image.getBoundingClientRect().height;
-				//console.log(typeof vilb_image.getBoundingClientRect().height, vilb_image.getBoundingClientRect().width);
-				canvas.getContext("2d").drawImage(image, 0, 0, canvas.width, canvas.hight);
+				canvas.width = Math.ceil(vilb_image.getBoundingClientRect().width);
+				canvas.height = Math.ceil(vilb_image.getBoundingClientRect().height);
+				//console.log(Math.ceil(vilb_image.getBoundingClientRect().height), Math.ceil(vilb_image.getBoundingClientRect().width));
+				canvas.getContext("2d").drawImage(image, 0, 0);
 				var image = new Image();
 				image.setAttribute('crossOrigin', 'anonymous');
 				image.src = canvas.toDataURL("image/png");
