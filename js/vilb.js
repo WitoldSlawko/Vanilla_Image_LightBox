@@ -523,7 +523,8 @@ document.addEventListener("DOMContentLoaded", function () {
 		var canvas = document.createElement("canvas");
 		canvas.width = image.getBoundingClientRect().width;
 		canvas.height = image.getBoundingClientRect().height;
-		canvas.getContext("2d").drawImage(image);
+		console.log( canvas.width, canvas.height );
+		canvas.getContext("2d").drawImage(image, 0, 0);
 		return canvas;
 	}
 	
