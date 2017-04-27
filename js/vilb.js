@@ -71,6 +71,7 @@ document.addEventListener("DOMContentLoaded", function () {
 			vilb_full_screen.setAttribute('id', 'vilb_styles_purgatory');
 			vilb_full_screen.style.display = 'flex';
 			vilb_full_screen.style.flexDirection = 'column';
+			vilb_full_screen.style.justifyContent = 'space-around';
 			vilb_full_screen.style.position = 'fixed';
 			vilb_full_screen.style.width = '100%';
 			vilb_full_screen.style.height = '100%';
@@ -159,8 +160,16 @@ document.addEventListener("DOMContentLoaded", function () {
 			var vilb_src_path = document.createElement('p');
 			vilb_src_path.setAttribute('id', 'vilb_styles_purgatory');
 			vilb_src_path.style.fontWeight = 'bold';
-			//vilb_src_path.style.alignSelf = 'center';
 			vilb_src_path.innerHTML = 'Donwload oryginal image file:  ';
+
+			// CANVAS image
+			var vilb_canvas = document.createElement('a');
+			vilb_canvas.setAttribute('id', 'vilb_styles_purgatory');
+			vilb_canvas.innerHTML = 'CANVAS';
+			vilb_canvas.style.width = '120px';
+			vilb_canvas.style.height = '30px';
+			vilb_canvas.style.margin = '0px 10px';
+			vilb_canvas.style.border = '1px solid black';
 
 			// Image link
 			var vilb_src_link = document.createElement('a');
@@ -184,7 +193,7 @@ document.addEventListener("DOMContentLoaded", function () {
 			vilb_center_row.style.alignItems = 'center';
 			vilb_center_row.style.border = '3px solid black';
 			vilb_center_row.style.overflow = 'scroll';
-			vilb_center_row.style.height = '80%';
+			vilb_center_row.style.height = '75%';
 
 			// 4th Row
 			var vilb_4th_row = document.createElement('div');
@@ -246,6 +255,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 			vilb_3rd_row.appendChild(vilb_src_path);
 			vilb_3rd_row.appendChild(vilb_src_link);
+			vilb_3rd_row.appendChild(vilb_canvas);
 			vilb_full_screen.appendChild(vilb_3rd_row);
 
 			vilb_center_row.appendChild(vilb_image);
@@ -272,22 +282,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
 			// Click events
 			vilb_close_button.addEventListener("click", vilb_closing);
-
 			vilb_rotate_left.addEventListener("click", vilb_rotating_left);
-
 			vilb_rotate_right.addEventListener("click", vilb_rotating_right);
-
 			vilb_scale_down.addEventListener("click", vilb_scaling_down);
-
 			vilb_scale_up.addEventListener("click", vilb_scaling_up);
-
 			vilb_previous_button.addEventListener("click", vilb_sliding_left);
-
 			vilb_next_button.addEventListener("click", vilb_sliding_right);
-
 			vilb_home_button.addEventListener("click", vilb_first_sliding);
-
 			vilb_end_button.addEventListener("click", vilb_last_sliding);
+			vilb_canvas.addEventListener("click", vilb_imaging_canvas);
 
 			// Closing VILB
 			function vilb_closing() {
@@ -407,7 +410,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 			// Sliding to the FIRST image
 			function vilb_first_sliding() {
-				if (vilb_locking >= 0 && vilb_locking < vilb_imgs.length - 2) {
+				if (vilb_locking >= 0 && vilb_locking < vilb_imgs.length - 1) {
 					vilb_rotation = 0;
 					vilb_rotation_string = 'rotate(' + vilb_rotation + 'deg)';
 					vilb_scaling = 1;
@@ -500,9 +503,36 @@ document.addEventListener("DOMContentLoaded", function () {
 					vilb_last_sliding();
 				}
 			}
+			
+			// Imaging canvas 
+			function vilb_imaging_canvas() {
+				console.log('canvas')
+				var vilb_temp_canvas = convertImageToCanvas(vilb_imgs[vilb_locking]);
+				//var vilb_temp_image = convertCanvasToImage(vilb_temp_canvas);
+				//vilb_canvas.setAttribute('href',vilb_temp_canvas.src);
+				vilb_temp_canvas.setAttribute('crossOrigin','anonymous');
+				vilb_canvas.setAttribute('href', vilb_temp_canvas.toDataURL("image/png"));
+				vilb_canvas.setAttribute('download',vilb_link_temp);
+				console.log(vilb_temp_canvas);
+			}
 		})
 	}
 
+	function convertImageToCanvas(image) {
+		var canvas = document.createElement("canvas");
+		canvas.width = image.width;
+		canvas.height = image.height;
+		canvas.getContext("2d").drawImage(image, 0, 0);
+		return canvas;
+	}
+	/*
+	function convertCanvasToImage(canvas) {
+		var image = new Image();
+		image.setAttribute('crossOrigin','anonymous');
+		image.src = canvas.toDataURL("image/png");
+		return image;
+	}
+	*/
 });
 
 var sheet = (function () {
