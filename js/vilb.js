@@ -512,7 +512,7 @@ document.addEventListener("DOMContentLoaded", function () {
 				canvas.width = Math.ceil(vilb_image.getBoundingClientRect().width);
 				canvas.height = Math.ceil(vilb_image.getBoundingClientRect().height);
 				//console.log(Math.ceil(vilb_image.getBoundingClientRect().height), Math.ceil(vilb_image.getBoundingClientRect().width));
-				canvas.getContext("2d").drawImage(image, 0, 0);
+				canvas.getContext("2d").drawImage(vilb_image, 0, 0);
 				var image = new Image();
 				image.setAttribute('crossOrigin', 'anonymous');
 				image.src = canvas.toDataURL("image/png");
