@@ -507,34 +507,20 @@ document.addEventListener("DOMContentLoaded", function () {
 
 			// Imaging canvas 
 			function vilb_imaging_canvas() {
-				//console.log('canvas')
+				//console.log(vilb_link_temp.substring(0,vilb_link_temp.indexOf('.')));
 				var canvas = document.createElement("canvas");
 				canvas.width = Math.ceil(vilb_image.getBoundingClientRect().width);
 				canvas.height = Math.ceil(vilb_image.getBoundingClientRect().height);
-				//console.log(Math.ceil(vilb_image.getBoundingClientRect().height), Math.ceil(vilb_image.getBoundingClientRect().width));
 				canvas.getContext("2d").drawImage(vilb_image, 0, 0, vilb_image.getBoundingClientRect().width, vilb_image.getBoundingClientRect().height);
 				var image = new Image();
 				image.setAttribute('crossOrigin', 'anonymous');
 				image.src = canvas.toDataURL("image/png");
-				//return canvas;
-				//var vilb_temp_canvas = convertImageToCanvas(vilb_imgs[vilb_locking]);
-				//var vilb_temp_image = convertCanvasToImage(vilb_temp_canvas);
 				vilb_canvas.setAttribute('href', image.src);
-				//vilb_canvas.setAttribute('href',vilb_temp_canvas.src);
-				//vilb_temp_canvas.setAttribute('crossOrigin','anonymous');
-				//vilb_canvas.setAttribute('href', vilb_temp_canvas.toDataURL("image/png"));
-				vilb_canvas.setAttribute('download', 'abc.png');
-				//console.log(vilb_temp_canvas);
+				//vilb_canvas.setAttribute('download', 'abc.png');
+				vilb_canvas.setAttribute('download', vilb_link_temp.substring(0,vilb_link_temp.indexOf('.'))+'.png');
 			}
 		})
 	}
-
-	//function convertImageToCanvas(image) {
-	//}
-
-	//function convertCanvasToImage(canvas) {
-		//return image;
-	//}
 
 });
 
