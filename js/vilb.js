@@ -320,7 +320,7 @@ document.addEventListener("DOMContentLoaded", function () {
 			vilb_next_button.addEventListener("click", vilb_sliding_right);
 			vilb_home_button.addEventListener("click", vilb_first_sliding);
 			vilb_end_button.addEventListener("click", vilb_last_sliding);
-			//vilb_canvas.addEventListener("click", vilb_imaging_canvas);
+			vilb_canvas.addEventListener("click", vilb_imaging_canvas);
 
 			// Closing VILB
 			function vilb_closing() {
@@ -374,7 +374,7 @@ document.addEventListener("DOMContentLoaded", function () {
 					vilb_center_row.style.alignItems = 'center';
 					vilb_image.style.transformOrigin = 'center';
 				}
-				console.log(vilb_image.getBoundingClientRect().height)
+				//console.log(vilb_image.getBoundingClientRect().height)
 				vilb_scaling_string = 'scale(' + vilb_scaling + ')';
 				vilb_image.style.transform = vilb_rotation_string + ' ' + vilb_scaling_string;
 				return vilb_scaling, vilb_rotation, vilb_rotation_string, vilb_scaling_string;
@@ -399,7 +399,7 @@ document.addEventListener("DOMContentLoaded", function () {
 					vilb_image.style.height = vilb_imgs[vilb_locking].offsetHeight + 'px';
 					vilb_steps_viewer.innerText = 'Image ' + (vilb_locking + 1) + ' from ' + (vilb_imgs.length - 1);
 					vilb_canvas.innerHTML = vilb_link_temp.substring(0, vilb_link_temp.indexOf('.')) + '.png';
-					vilb_imaging_canvas();
+					//vilb_imaging_canvas();
 					if (vilb_imgs[vilb_locking].getBoundingClientRect().height > vilb_center_row.offsetHeight) {
 						vilb_center_row.style.alignItems = 'flex-start';
 						vilb_image.style.transformOrigin = 'top';
@@ -430,7 +430,7 @@ document.addEventListener("DOMContentLoaded", function () {
 					vilb_image.style.height = vilb_imgs[vilb_locking].offsetHeight + 'px';
 					vilb_steps_viewer.innerText = 'Image ' + (vilb_locking + 1) + ' from ' + (vilb_imgs.length - 1);
 					vilb_canvas.innerHTML = vilb_link_temp.substring(0, vilb_link_temp.indexOf('.')) + '.png';
-					vilb_imaging_canvas();
+					//vilb_imaging_canvas();
 					if (vilb_imgs[vilb_locking].getBoundingClientRect().height > vilb_center_row.offsetHeight) {
 						vilb_center_row.style.alignItems = 'flex-start';
 						vilb_image.style.transformOrigin = 'top';
@@ -461,7 +461,7 @@ document.addEventListener("DOMContentLoaded", function () {
 					vilb_image.style.height = vilb_imgs[vilb_locking].offsetHeight + 'px';
 					vilb_steps_viewer.innerText = 'Image ' + (vilb_locking + 1) + ' from ' + (vilb_imgs.length - 1);
 					vilb_canvas.innerHTML = vilb_link_temp.substring(0, vilb_link_temp.indexOf('.')) + '.png';
-					vilb_imaging_canvas();
+					//vilb_imaging_canvas();
 					if (vilb_imgs[vilb_locking].getBoundingClientRect().height > vilb_center_row.offsetHeight) {
 						vilb_center_row.style.alignItems = 'flex-start';
 						vilb_image.style.transformOrigin = 'top';
@@ -492,7 +492,7 @@ document.addEventListener("DOMContentLoaded", function () {
 					vilb_image.style.height = vilb_imgs[vilb_locking].offsetHeight + 'px';
 					vilb_steps_viewer.innerText = 'Image ' + (vilb_locking + 1) + ' from ' + (vilb_imgs.length - 1);
 					vilb_canvas.innerHTML = vilb_link_temp.substring(0, vilb_link_temp.indexOf('.')) + '.png';
-					vilb_imaging_canvas();
+					//vilb_imaging_canvas();
 					if (vilb_imgs[vilb_locking].getBoundingClientRect().height > vilb_center_row.offsetHeight) {
 						vilb_center_row.style.alignItems = 'flex-start';
 						vilb_image.style.transformOrigin = 'top';
