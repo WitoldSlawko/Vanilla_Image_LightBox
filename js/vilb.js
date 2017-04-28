@@ -150,26 +150,17 @@ document.addEventListener("DOMContentLoaded", function () {
 			vilb_scale_up.style.height = '30px';
 			vilb_scale_up.style.margin = '0px 10px';
 
-			// 3rd Row
-			var vilb_3rd_row = document.createElement('div');
-			vilb_3rd_row.setAttribute('id', 'vilb_styles_purgatory');
-			vilb_3rd_row.style.display = 'flex';
-			vilb_3rd_row.style.justifyContent = 'center';
+			// 3rd Row (A)
+			var vilb_3rd_row_a = document.createElement('div');
+			vilb_3rd_row_a.setAttribute('id', 'vilb_styles_purgatory');
+			vilb_3rd_row_a.style.display = 'flex';
+			vilb_3rd_row_a.style.justifyContent = 'center';
 
 			// Image source path
 			var vilb_src_path = document.createElement('p');
 			vilb_src_path.setAttribute('id', 'vilb_styles_purgatory');
 			vilb_src_path.style.fontWeight = 'bold';
-			vilb_src_path.innerHTML = 'Donwload oryginal image file:  ';
-
-			// CANVAS image
-			var vilb_canvas = document.createElement('a');
-			vilb_canvas.setAttribute('id', 'vilb_styles_purgatory');
-			vilb_canvas.innerHTML = 'CANVAS';
-			vilb_canvas.style.width = '120px';
-			vilb_canvas.style.height = '30px';
-			vilb_canvas.style.margin = '0px 10px';
-			vilb_canvas.style.border = '1px solid black';
+			vilb_src_path.innerHTML = 'Donwload oryginal (unrotated) source image file in native format:  ';
 
 			// Image link
 			var vilb_src_link = document.createElement('a');
@@ -185,6 +176,41 @@ document.addEventListener("DOMContentLoaded", function () {
 			vilb_src_link.setAttribute('download', vilb_link_temp);
 			vilb_src_link.setAttribute('href', vilb_image.src);
 
+			//3rd Row (B)
+			var vilb_3rd_row_b = document.createElement('div');
+			vilb_3rd_row_b.setAttribute('id', 'vilb_styles_purgatory');
+			vilb_3rd_row_b.style.display = 'flex';
+			vilb_3rd_row_b.style.justifyContent = 'center';
+
+			// Canvas source path
+			var vilb_canvas_src_path = document.createElement('p');
+			vilb_canvas_src_path.setAttribute('id', 'vilb_styles_purgatory');
+			vilb_canvas_src_path.style.fontWeight = 'bold';
+			vilb_canvas_src_path.innerHTML = 'Donwload canvas (unrotated but resized) image in .png format:  ';
+
+			// CANVAS link
+			var vilb_canvas = document.createElement('a');
+			vilb_canvas.setAttribute('id', 'vilb_styles_purgatory');
+			vilb_canvas.innerHTML = vilb_link_temp.substring(0, vilb_link_temp.indexOf('.')) + '.png';
+			vilb_canvas.style.color = 'darkblue';
+			vilb_canvas.style.textDecoration = 'underline';
+			vilb_canvas.style.display = 'flex';
+			vilb_canvas.style.justifyContent = 'center';
+			vilb_canvas.style.fontWeight = 'bold';
+			vilb_imaging_canvas();
+			/*
+			var canvas = document.createElement("canvas");
+			canvas.width = Math.ceil(vilb_image.getBoundingClientRect().width);
+			canvas.height = Math.ceil(vilb_image.getBoundingClientRect().height);
+			canvas.getContext("2d").drawImage(vilb_image, 0, 0, vilb_image.getBoundingClientRect().width, vilb_image.getBoundingClientRect().height);
+			
+			var image = new Image();
+			image.setAttribute('crossOrigin', 'anonymous');
+			image.src = canvas.toDataURL("image/png");
+			
+			vilb_canvas.setAttribute('href', image.src);
+			vilb_canvas.setAttribute('download', vilb_link_temp.substring(0, vilb_link_temp.indexOf('.')) + '.png');
+			*/
 			// Center Row
 			var vilb_center_row = document.createElement('div');
 			vilb_center_row.setAttribute('id', 'vilb_styles_purgatory');
@@ -205,7 +231,7 @@ document.addEventListener("DOMContentLoaded", function () {
 			//Home Button
 			var vilb_home_button = document.createElement('button');
 			vilb_home_button.setAttribute('id', 'vilb_styles_purgatory');
-			vilb_home_button.innerHTML = "[Home] Image";
+			vilb_home_button.innerHTML = "[&uarr;] First";
 			vilb_home_button.style.width = "120px";
 			vilb_home_button.style.height = "30px";
 
@@ -235,7 +261,7 @@ document.addEventListener("DOMContentLoaded", function () {
 			// Last image Button
 			var vilb_end_button = document.createElement('button');
 			vilb_end_button.setAttribute('id', 'vilb_styles_purgatory');
-			vilb_end_button.innerHTML = "[End] Image";
+			vilb_end_button.innerHTML = "[&darr;] Last";
 			vilb_end_button.style.width = "120px";
 			vilb_end_button.style.height = "30px";
 
@@ -253,10 +279,14 @@ document.addEventListener("DOMContentLoaded", function () {
 			vilb_2nd_row.append(vilb_scale_up);
 			vilb_full_screen.appendChild(vilb_2nd_row);
 
-			vilb_3rd_row.appendChild(vilb_src_path);
-			vilb_3rd_row.appendChild(vilb_src_link);
-			vilb_3rd_row.appendChild(vilb_canvas);
-			vilb_full_screen.appendChild(vilb_3rd_row);
+			vilb_3rd_row_a.appendChild(vilb_src_path);
+			vilb_3rd_row_a.appendChild(vilb_src_link);
+			vilb_3rd_row_a.appendChild(vilb_canvas);
+			vilb_full_screen.appendChild(vilb_3rd_row_a);
+
+			vilb_3rd_row_b.appendChild(vilb_canvas_src_path);
+			vilb_3rd_row_b.appendChild(vilb_canvas);
+			vilb_full_screen.appendChild(vilb_3rd_row_b);
 
 			vilb_center_row.appendChild(vilb_image);
 			vilb_full_screen.appendChild(vilb_center_row);
@@ -290,7 +320,7 @@ document.addEventListener("DOMContentLoaded", function () {
 			vilb_next_button.addEventListener("click", vilb_sliding_right);
 			vilb_home_button.addEventListener("click", vilb_first_sliding);
 			vilb_end_button.addEventListener("click", vilb_last_sliding);
-			vilb_canvas.addEventListener("click", vilb_imaging_canvas);
+			//vilb_canvas.addEventListener("click", vilb_imaging_canvas);
 
 			// Closing VILB
 			function vilb_closing() {
@@ -368,6 +398,8 @@ document.addEventListener("DOMContentLoaded", function () {
 					vilb_image.style.width = vilb_imgs[vilb_locking].offsetWidth + 'px';
 					vilb_image.style.height = vilb_imgs[vilb_locking].offsetHeight + 'px';
 					vilb_steps_viewer.innerText = 'Image ' + (vilb_locking + 1) + ' from ' + (vilb_imgs.length - 1);
+					vilb_canvas.innerHTML = vilb_link_temp.substring(0, vilb_link_temp.indexOf('.')) + '.png';
+					vilb_imaging_canvas();
 					if (vilb_imgs[vilb_locking].getBoundingClientRect().height > vilb_center_row.offsetHeight) {
 						vilb_center_row.style.alignItems = 'flex-start';
 						vilb_image.style.transformOrigin = 'top';
@@ -388,7 +420,6 @@ document.addEventListener("DOMContentLoaded", function () {
 					vilb_scaling_string = 'scale(' + vilb_scaling + ')';
 					vilb_image.style.transform = vilb_rotation_string + ' ' + vilb_scaling_string;
 					vilb_locking += 1;
-					vilb_src_path.innerHTML = 'Donwload oryginal image file:  ';
 					vilb_image.src = vilb_imgs[vilb_locking].src;
 					vilb_last_slash = vilb_image.src.lastIndexOf('/');
 					vilb_link_temp = vilb_image.src.substring(vilb_last_slash + 1, vilb_image.src.length);
@@ -398,6 +429,8 @@ document.addEventListener("DOMContentLoaded", function () {
 					vilb_image.style.width = vilb_imgs[vilb_locking].offsetWidth + 'px';
 					vilb_image.style.height = vilb_imgs[vilb_locking].offsetHeight + 'px';
 					vilb_steps_viewer.innerText = 'Image ' + (vilb_locking + 1) + ' from ' + (vilb_imgs.length - 1);
+					vilb_canvas.innerHTML = vilb_link_temp.substring(0, vilb_link_temp.indexOf('.')) + '.png';
+					vilb_imaging_canvas();
 					if (vilb_imgs[vilb_locking].getBoundingClientRect().height > vilb_center_row.offsetHeight) {
 						vilb_center_row.style.alignItems = 'flex-start';
 						vilb_image.style.transformOrigin = 'top';
@@ -418,7 +451,6 @@ document.addEventListener("DOMContentLoaded", function () {
 					vilb_scaling_string = 'scale(' + vilb_scaling + ')';
 					vilb_image.style.transform = vilb_rotation_string + ' ' + vilb_scaling_string;
 					vilb_locking = 0;
-					vilb_src_path.innerHTML = 'Donwload oryginal image file:  ';
 					vilb_image.src = vilb_imgs[vilb_locking].src;
 					vilb_last_slash = vilb_image.src.lastIndexOf('/');
 					vilb_link_temp = vilb_image.src.substring(vilb_last_slash + 1, vilb_image.src.length);
@@ -428,6 +460,8 @@ document.addEventListener("DOMContentLoaded", function () {
 					vilb_image.style.width = vilb_imgs[vilb_locking].offsetWidth + 'px';
 					vilb_image.style.height = vilb_imgs[vilb_locking].offsetHeight + 'px';
 					vilb_steps_viewer.innerText = 'Image ' + (vilb_locking + 1) + ' from ' + (vilb_imgs.length - 1);
+					vilb_canvas.innerHTML = vilb_link_temp.substring(0, vilb_link_temp.indexOf('.')) + '.png';
+					vilb_imaging_canvas();
 					if (vilb_imgs[vilb_locking].getBoundingClientRect().height > vilb_center_row.offsetHeight) {
 						vilb_center_row.style.alignItems = 'flex-start';
 						vilb_image.style.transformOrigin = 'top';
@@ -448,7 +482,6 @@ document.addEventListener("DOMContentLoaded", function () {
 					vilb_scaling_string = 'scale(' + vilb_scaling + ')';
 					vilb_image.style.transform = vilb_rotation_string + ' ' + vilb_scaling_string;
 					vilb_locking = vilb_imgs.length - 2;
-					vilb_src_path.innerHTML = 'Donwload oryginal image file:  ';
 					vilb_image.src = vilb_imgs[vilb_locking].src;
 					vilb_last_slash = vilb_image.src.lastIndexOf('/');
 					vilb_link_temp = vilb_image.src.substring(vilb_last_slash + 1, vilb_image.src.length);
@@ -458,6 +491,8 @@ document.addEventListener("DOMContentLoaded", function () {
 					vilb_image.style.width = vilb_imgs[vilb_locking].offsetWidth + 'px';
 					vilb_image.style.height = vilb_imgs[vilb_locking].offsetHeight + 'px';
 					vilb_steps_viewer.innerText = 'Image ' + (vilb_locking + 1) + ' from ' + (vilb_imgs.length - 1);
+					vilb_canvas.innerHTML = vilb_link_temp.substring(0, vilb_link_temp.indexOf('.')) + '.png';
+					vilb_imaging_canvas();
 					if (vilb_imgs[vilb_locking].getBoundingClientRect().height > vilb_center_row.offsetHeight) {
 						vilb_center_row.style.alignItems = 'flex-start';
 						vilb_image.style.transformOrigin = 'top';
@@ -498,26 +533,42 @@ document.addEventListener("DOMContentLoaded", function () {
 					vilb_sliding_left();
 				} else if (pressing.keyCode === 39) {
 					vilb_sliding_right();
-				} else if (pressing.keyCode === 36) {
+				} else if (pressing.keyCode === 38) {
 					vilb_first_sliding();
-				} else if (pressing.keyCode === 35) {
+				} else if (pressing.keyCode === 40) {
 					vilb_last_sliding();
 				}
 			}
-
+			/*
+						// Imaging canvas 
+						function vilb_imaging_canvas() {
+							//console.log(vilb_link_temp.substring(0,vilb_link_temp.indexOf('.')));
+							var canvas = document.createElement("canvas");
+							canvas.width = Math.ceil(vilb_image.getBoundingClientRect().width);
+							canvas.height = Math.ceil(vilb_image.getBoundingClientRect().height);
+							canvas.getContext("2d").drawImage(vilb_image, 0, 0, vilb_image.getBoundingClientRect().width, vilb_image.getBoundingClientRect().height);
+							var image = new Image();
+							image.setAttribute('crossOrigin', 'anonymous');
+							image.src = canvas.toDataURL("image/png");
+							vilb_canvas.setAttribute('href', image.src);
+							//vilb_canvas.setAttribute('download', 'abc.png');
+							vilb_canvas.setAttribute('download', vilb_link_temp.substring(0,vilb_link_temp.indexOf('.'))+'.png');
+							//vilb_canvas.innerHTML = vilb_link_temp.substring(0,vilb_link_temp.indexOf('.'))+'.png';
+						}
+						*/
 			// Imaging canvas 
 			function vilb_imaging_canvas() {
-				//console.log(vilb_link_temp.substring(0,vilb_link_temp.indexOf('.')));
 				var canvas = document.createElement("canvas");
 				canvas.width = Math.ceil(vilb_image.getBoundingClientRect().width);
 				canvas.height = Math.ceil(vilb_image.getBoundingClientRect().height);
 				canvas.getContext("2d").drawImage(vilb_image, 0, 0, vilb_image.getBoundingClientRect().width, vilb_image.getBoundingClientRect().height);
+
 				var image = new Image();
 				image.setAttribute('crossOrigin', 'anonymous');
 				image.src = canvas.toDataURL("image/png");
+
 				vilb_canvas.setAttribute('href', image.src);
-				//vilb_canvas.setAttribute('download', 'abc.png');
-				vilb_canvas.setAttribute('download', vilb_link_temp.substring(0,vilb_link_temp.indexOf('.'))+'.png');
+				vilb_canvas.setAttribute('download', vilb_link_temp.substring(0, vilb_link_temp.indexOf('.')) + '.png');
 			}
 		})
 	}
