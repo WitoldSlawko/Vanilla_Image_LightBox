@@ -214,7 +214,7 @@ document.addEventListener("DOMContentLoaded", function () {
 			vilb_center_row.style.alignItems = 'center';
 			vilb_center_row.style.border = '3px solid black';
 			vilb_center_row.style.overflow = 'scroll';
-			vilb_center_row.style.height = '70%';
+			vilb_center_row.style.height = '80%';
 
 			// 4th Row
 			var vilb_4th_row = document.createElement('div');
