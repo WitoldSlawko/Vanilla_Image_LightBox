@@ -175,7 +175,7 @@ document.addEventListener("DOMContentLoaded", function () {
 			vilb_src_link.setAttribute('download', vilb_link_temp);
 			vilb_src_link.setAttribute('href', vilb_image.src);
 
-			//3rd Row (B)
+			// 3rd Row (B)
 			var vilb_3rd_row_b = document.createElement('div');
 			vilb_3rd_row_b.setAttribute('id', 'vilb_styles_purgatory');
 			vilb_3rd_row_b.style.display = 'flex';
