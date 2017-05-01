@@ -196,7 +196,7 @@ document.addEventListener("DOMContentLoaded", function () {
 			vilb_canvas.style.display = 'flex';
 			vilb_canvas.style.justifyContent = 'center';
 			vilb_canvas.style.fontWeight = 'bold';
-			//vilb_imaging_canvas();
+			vilb_imaging_canvas();
 			
 			// Center Row
 			var vilb_center_row = document.createElement('div');
