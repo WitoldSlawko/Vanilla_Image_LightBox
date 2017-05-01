@@ -40,7 +40,6 @@ document.addEventListener("DOMContentLoaded", function () {
 	vilb_body.appendChild(vilb_detection);
 
 	vilb_detection.addEventListener("mouseenter", function () {
-		//vilb_body.removeChild(vilb_detection);
 		vilb_detection.style.display = 'none';
 	})
 
