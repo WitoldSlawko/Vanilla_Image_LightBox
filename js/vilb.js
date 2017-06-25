@@ -294,7 +294,7 @@ document.addEventListener("DOMContentLoaded", function () {
 			vilb_steps_viewer.setAttribute('id', 'vilb_styles_purgatory');
 			vilb_steps_viewer.style.margin = '0px 20px';
 			vilb_steps_viewer.style.fontWeight = 'bold';
-			vilb_steps_viewer.innerText = 'Image ' + (vilb_locking + 1) + ' from ' + vilb_imgs.length;
+			vilb_steps_viewer.innerText = 'Image ' + (vilb_locking + 1) + ' of ' + vilb_imgs.length;
 
 			// First image Button
 			var vilb_next_button = document.createElement('button');
